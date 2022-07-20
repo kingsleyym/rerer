@@ -16,9 +16,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(16, 48, 16, 48),
+        padding: EdgeInsets.fromLTRB(16, 48, 16, 0),
         child: Container(
-          height: MediaQuery.of(context).size.height - 100,
+          height: MediaQuery.of(context).size.height - 90,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -62,31 +62,34 @@ Widget _header() {
 }
 
 Widget _navbar() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
-      color: Colors.grey,
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.home),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.home),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.home),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.home),
-        ),
-      ],
+  return Padding(
+    padding: const EdgeInsets.only(top: 18.0),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Colors.grey,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.home),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.home),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.home),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.home),
+          ),
+        ],
+      ),
     ),
   );
 }

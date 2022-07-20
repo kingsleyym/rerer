@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hayan_app/themes/app_theme.dart';
+import 'package:hayan_app/widget/favorite_button.dart';
+import 'favorite_button.dart';
 
 class SiteCard extends StatelessWidget {
   final ImageProvider<Object> image;
@@ -15,56 +17,72 @@ class SiteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: image,
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 15,
-            offset: Offset(0, 12),
-            color: Colors.black26,
-          )
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            alignment: Alignment.topRight,
-            child: Text("map"),
+        height: 420,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: image,
+            fit: BoxFit.cover,
           ),
-          Spacer(),
-          Row(
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 15,
+              offset: Offset(0, 12),
+              color: Colors.black26,
+            )
+          ],
+        ),
+        child: Container(
+          height: 400,
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Colors.transparent,
+              Colors.black12,
+              Colors.black54,
+            ], stops: [
+              0.5,
+              0.75,
+              1
+            ]),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: 200,
-                child: Text(
-                  siteName,
-                  style: AppTheme.theme.textTheme.headline5,
-                  maxLines: 2,
-                ),
+                alignment: Alignment.topRight,
+                child: Text("map"),
               ),
               Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.favorite_outline),
-              )
+              Row(
+                children: [
+                  Container(
+                    width: 200,
+                    child: Text(
+                      siteName,
+                      style: AppTheme.theme.textTheme.headline5,
+                      maxLines: 2,
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: FavoriteButton(
+                      onPressed: () {},
+                    ),
+                  )
+                ],
+              ),
+              Container(
+                height: 12,
+              ),
+              Text(
+                address,
+                style: AppTheme.theme.textTheme.caption,
+              ),
             ],
           ),
-          Container(
-            height: 12,
-          ),
-          Text(
-            address,
-            style: AppTheme.theme.textTheme.caption,
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }
