@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/widget/favorite_button.dart';
+import 'package:hayan_app/widget/open_map_button.dart';
 import 'favorite_button.dart';
 
 class SiteCard extends StatelessWidget {
@@ -50,10 +51,7 @@ class SiteCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                alignment: Alignment.topRight,
-                child: Text("map"),
-              ),
+              OpenMapButton(),
               Spacer(),
               Row(
                 children: [
