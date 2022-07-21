@@ -43,7 +43,6 @@ class _NavBarState extends State<NavBar> {
       ),
     );
   }
-}
 
 Widget _button({
   required int index,
