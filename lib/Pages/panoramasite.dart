@@ -80,33 +80,25 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0002.jpg'),
+          child: Image.asset('assets/vr/0004.jpg'),
           hotspots: [
             Hotspot(
-              latitude: -15.0,
-              longitude: -129.0,
-              width: 90,
-              height: 75,
-              widget: hotspotButton(
-                  text: "Next scene",
-                  icon: Icons.open_in_browser,
-                  onPressed: () => setState(() => _panoId++)),
-            ),
-            Hotspot(
               latitude: -42.0,
-              longitude: -46.0,
+              longitude: -5.0,
               width: 60.0,
               height: 60.0,
               widget: hotspotButton(
-                  icon: Icons.search,
+                  icon: Icons.arrow_circle_up_outlined,
                   onPressed: () => setState(() => _panoId = 4)),
             ),
             Hotspot(
-              latitude: -33.0,
-              longitude: 123.0,
+              latitude: -42.0,
+              longitude: -85.0,
               width: 60.0,
               height: 60.0,
-              widget: hotspotButton(icon: Icons.arrow_upward, onPressed: () {}),
+              widget: hotspotButton(
+                  icon: Icons.arrow_circle_up_outlined,
+                  onPressed: () => setState(() => _panoId = 7)),
             ),
           ],
         );
@@ -138,18 +130,8 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0004.jpg'),
+          child: Image.asset('assets/vr/0002.jpg'),
           hotspots: [
-            Hotspot(
-              latitude: 0.0,
-              longitude: -46.0,
-              width: 90.0,
-              height: 75.0,
-              widget: hotspotButton(
-                  text: "Next scene",
-                  icon: Icons.double_arrow,
-                  onPressed: () => setState(() => _panoId++)),
-            ),
             Hotspot(
               latitude: -42.0,
               longitude: -5.0,
@@ -168,18 +150,195 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0005.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -60.0,
+              longitude: -240.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.search,
+                  onPressed: () => setState(() => _panoId = 0)),
+            ),
+          ],
+        );
+        break;
+      case 5:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
           child: Image.asset('assets/vr/0006.jpg'),
           hotspots: [
             Hotspot(
-              latitude: 0.0,
-              longitude: -46.0,
-              width: 90.0,
-              height: 75.0,
+              latitude: -42.0,
+              longitude: -5.0,
+              width: 60.0,
+              height: 60.0,
               widget: hotspotButton(
-                  text: "Next scene",
-                  icon: Icons.double_arrow,
-                  onPressed: () => setState(() => _panoId++)),
+                  icon: Icons.search,
+                  onPressed: () => setState(() => _panoId = 4)),
             ),
+          ],
+        );
+        break;
+      case 6:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0007.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -42.0,
+              longitude: -5.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.arrow_downward_outlined,
+                  onPressed: () => setState(() => _panoId = 7)),
+            ),
+          ],
+        );
+        break;
+      case 7:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0008.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -60.0,
+              longitude: -155.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.arrow_circle_up_rounded,
+                  onPressed: () => setState(() => _panoId = 6)),
+            ),
+            Hotspot(
+              latitude: -60.0,
+              longitude: -60.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.arrow_circle_up_rounded,
+                  onPressed: () => setState(() => _panoId = 8)),
+            ),
+            Hotspot(
+              latitude: -60.0,
+              longitude: -250.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.arrow_circle_up_rounded,
+                  onPressed: () => setState(() => _panoId = 0)),
+            ),
+          ],
+        );
+        break;
+      case 8:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0009.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -60.0,
+              longitude: -155.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.arrow_circle_up_rounded,
+                  onPressed: () => setState(() => _panoId = 6)),
+            ),
+            Hotspot(
+              latitude: -60.0,
+              longitude: -155.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.arrow_circle_up_rounded,
+                  onPressed: () => setState(() => _panoId = 8)),
+            ),
+          ],
+        );
+        break;
+      case 9:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0010.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -42.0,
+              longitude: -5.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.search,
+                  onPressed: () => setState(() => _panoId = 4)),
+            ),
+          ],
+        );
+        break;
+      case 10:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0011.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -42.0,
+              longitude: -5.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.search,
+                  onPressed: () => setState(() => _panoId = 4)),
+            ),
+          ],
+        );
+        break;
+      case 11:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0012.jpg'),
+          hotspots: [
+            Hotspot(
+              latitude: -42.0,
+              longitude: -5.0,
+              width: 60.0,
+              height: 60.0,
+              widget: hotspotButton(
+                  icon: Icons.search,
+                  onPressed: () => setState(() => _panoId = 4)),
+            ),
+          ],
+        );
+        break;
+      case 12:
+        panorama = Panorama(
+          sensitivity: 2,
+          animSpeed: 1.0,
+          sensorControl: SensorControl.Orientation,
+          onViewChanged: onViewChanged,
+          child: Image.asset('assets/vr/0013.jpg'),
+          hotspots: [
             Hotspot(
               latitude: -42.0,
               longitude: -5.0,
