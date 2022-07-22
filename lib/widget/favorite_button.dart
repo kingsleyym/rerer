@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/widget/search_bar.dart';
 
+import '../Pages/panoramasite.dart';
+
 class FavoriteButton extends StatelessWidget {
   final VoidCallback? onpressed;
   const FavoriteButton(
@@ -34,10 +36,18 @@ class FavoriteButton extends StatelessWidget {
                   onTap: onPressed,
                   child: Container(
                     padding: EdgeInsets.only(top: 2),
-                    child: Icon(
-                      Icons.favorite_outline_outlined,
-                      color: AppTheme.palette.secondaryColor,
-                    ),
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage()),
+                          );
+                        },
+                        icon: Icon(
+                          Icons.favorite_outline_outlined,
+                          color: AppTheme.palette.secondaryColor,
+                        )),
                   ),
                 ),
               ),

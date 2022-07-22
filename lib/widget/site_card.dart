@@ -3,6 +3,7 @@ import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/widget/favorite_button.dart';
 import 'package:hayan_app/widget/open_map_button.dart';
 import 'favorite_button.dart';
+import 'package:hayan_app/Pages/panoramasite.dart';
 
 class SiteCard extends StatelessWidget {
   final ImageProvider<Object> image;
@@ -51,7 +52,20 @@ class SiteCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              OpenMapButton(),
+              Row(
+                children: [
+                  FavoriteButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()),
+                      );
+                    },
+                  ),
+                  Spacer(),
+                  OpenMapButton(),
+                ],
+              ),
               Spacer(),
               Row(
                 children: [

@@ -44,30 +44,31 @@ class _NavBarState extends State<NavBar> {
     );
   }
 
-Widget _button({
-  required int index,
-  required IconData icon,
-  VoidCallback? onPressed,
-  int selectedIndex: 0,
-}) {
-  bool isSelected = selectedIndex == index;
-  return Material(
-    color: isSelected ? AppTheme.palette.buttonOverlay : Colors.transparent,
-    borderRadius: BorderRadius.circular(13),
-    clipBehavior: Clip.antiAlias,
-    child: IconButton(
-      visualDensity: VisualDensity.compact,
-      icon: Icon(
-        icon,
-        color: isSelected
-            ? AppTheme.palette.secondaryColor
-            : AppTheme.palette.buttonOverlay,
+  Widget _button({
+    required int index,
+    required IconData icon,
+    VoidCallback? onPressed,
+    int selectedIndex: 0,
+  }) {
+    bool isSelected = selectedIndex == index;
+    return Material(
+      color: isSelected ? AppTheme.palette.buttonOverlay : Colors.transparent,
+      borderRadius: BorderRadius.circular(13),
+      clipBehavior: Clip.antiAlias,
+      child: IconButton(
+        visualDensity: VisualDensity.compact,
+        icon: Icon(
+          icon,
+          color: isSelected
+              ? AppTheme.palette.secondaryColor
+              : AppTheme.palette.buttonOverlay,
+        ),
+        onPressed: () {
+          _selected = index;
+          onPressed?.call();
+          setState(() {});
+        },
       ),
-      onPressed: () {
-        _selected = index;
-        onPressed?.call();
-        setState(() {});
-      },
-    ),
-  );
+    );
+  }
 }
