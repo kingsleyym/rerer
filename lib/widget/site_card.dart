@@ -20,7 +20,7 @@ class SiteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 420,
+        height: 400,
         decoration: BoxDecoration(
           image: DecorationImage(
             alignment: Alignment(0.1, 0),
@@ -72,7 +72,7 @@ class SiteCard extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    width: 200,
+                    width: 150,
                     child: Text(
                       siteName,
                       style: AppTheme.theme.textTheme.headline5,

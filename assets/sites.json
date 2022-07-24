@@ -5,6 +5,7 @@
         "name": "Pole DUBAI Sud House",
         "address": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
+        "pic": "assets/images/ZweiBet-17.jpg",
         "contacts": [
             {
                 "name": "Tom Leitener",
@@ -20,16 +21,16 @@
             }
         ],
         "photos": [
-            "ZweiBet-01.jpg",
-            "ZweiBet-02.jpg",
-            "ZweiBet-03.jpg",
-            "ZweiBet-04.jpg",
-            "ZweiBet-05.jpg"
+            "assets/images/ZweiBet-30.jpg",
+            "assets/images/ZweiBet-29.jpg",
+            "assets/images/ZweiBet-28.jpg",
+            "assets/images/ZweiBet-27.jpg",
+            "assets/images/ZweiBet-26.jpg"
         ],
         "ateliers": "10",
         "bureaux": "2",
         "coworking": "25",
-        "map": "ZweiBet-07.jpg"
+        "map": "assets/images/ZweiBet-30.jpg"
     },
     {
         "id": 1,
@@ -37,6 +38,7 @@
         "name": "Pole DUBAI Sud House",
         "adress": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
+        "pic": "ZweiBet-18.jpg",
         "contacts": [
             {
                 "name": "Tom Leitener",
@@ -52,16 +54,16 @@
             }
         ],
         "photos": [
-            "ZweiBet-01.jpg",
-            "ZweiBet-02.jpg",
-            "ZweiBet-03.jpg",
-            "ZweiBet-04.jpg",
-            "ZweiBet-05.jpg"
+            "assets/images/ZweiBet-30.jpg",
+            "assets/images/ZweiBet-29.jpg",
+            "assets/images/ZweiBet-28.jpg",
+            "assets/images/ZweiBet-27.jpg",
+            "assets/images/ZweiBet-26.jpg"
         ],
         "ateliers": "10",
         "buraux": "2",
         "conoring": "25",
-        "map": "ZweiBet-07.jpg"
+        "map": "assets/images/ZweiBet-30.jpg"
     },
     {
         "id": 2,
@@ -69,6 +71,7 @@
         "name": "Pole DUBAI Sud House",
         "adress": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
+        "pic": "assets/images/ZweiBet-19.jpg",
         "contacts": [
             {
                 "name": "Tom Leitener",
@@ -84,15 +87,15 @@
             }
         ],
         "photos": [
-            "ZweiBet-01.jpg",
-            "ZweiBet-02.jpg",
-            "ZweiBet-03.jpg",
-            "ZweiBet-04.jpg",
-            "ZweiBet-05.jpg"
+            "assets/images/ZweiBet-30.jpg",
+            "assets/images/ZweiBet-29.jpg",
+            "assets/images/ZweiBet-28.jpg",
+            "assets/images/ZweiBet-27.jpg",
+            "assets/images/ZweiBet-26.jpg"
         ],
         "ateliers": "10",
         "buraux": "2",
         "conoring": "25",
-        "map": "ZweiBet-07.jpg"
+        "map": "assets/images/ZweiBet-30.jpg"
     }
 ]

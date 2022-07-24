@@ -17,7 +17,10 @@ class DropDownLocation extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [_dropdown(), _currentLocation(location)],
+      children: [
+        _dropdown(),
+        _currentLocation(location),
+      ],
     );
   }
 
