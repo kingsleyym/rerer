@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hayan_app/Pages/homepage.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/themes/base_them.dart';
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
       title: 'Flutter hayan',
       theme: ThemeData(

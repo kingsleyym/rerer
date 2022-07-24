@@ -18,28 +18,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(16, 48, 16, 48),
+      body: Container(
+        padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
         child: Container(
-          height: MediaQuery.of(context).size.height - 64,
+          height: MediaQuery.of(context).size.height - 50,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _header(),
-              Spacer(),
+              Spacer(
+                flex: 1,
+              ),
               SearchBar(
                 onPressed: () {},
               ),
-              Spacer(),
+              Spacer(
+                flex: 2,
+              ),
               Expanded(
                 flex: 20,
                 child: SiteCard(
                   siteName: "Two Beds Apartment",
                   address: "dubai 123",
-                  image: AssetImage("assets/images/ZweiBet-18.jpg"),
+                  image: AssetImage("assets/images/ZweiBet-30.jpg"),
                 ),
               ),
-              Spacer(),
+              Spacer(
+                flex: 1,
+              ),
               NavBar(),
             ],
           ),

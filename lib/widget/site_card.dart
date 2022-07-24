@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/widget/favorite_button.dart';
 import 'package:hayan_app/widget/open_map_button.dart';
+import 'Vr_button copy.dart';
 import 'favorite_button.dart';
 import 'package:hayan_app/Pages/panoramasite.dart';
 
@@ -22,6 +23,7 @@ class SiteCard extends StatelessWidget {
         height: 420,
         decoration: BoxDecoration(
           image: DecorationImage(
+            alignment: Alignment(0.1, 0),
             image: image,
             fit: BoxFit.cover,
           ),
@@ -54,7 +56,7 @@ class SiteCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  FavoriteButton(
+                  VrButton(
                     onPressed: () {
                       Navigator.push(
                         context,
