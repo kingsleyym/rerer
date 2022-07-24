@@ -7,9 +7,9 @@ class SiteInfos {
   final String? address;
   final String? desc;
   final String? map;
-  final int ateliers;
-  final int bureaux;
-  final int coworking;
+  final int? ateliers;
+  final int? bureaux;
+  final int? coworking;
 
   final List<String>? photos;
 
