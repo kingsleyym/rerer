@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8.0, right: 8),
                         child: SiteCard(
-                          siteName: "Two Beds Apartment",
+                          siteName: "Two Becds Apartment",
                           address: "dubai 123",
                           image: AssetImage("assets/images/ZweiBet-30.jpg"),
                         ),
