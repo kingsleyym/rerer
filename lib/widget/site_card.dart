@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/widget/favorite_button.dart';
 import 'package:hayan_app/widget/open_map_button.dart';
-import 'Vr_button copy.dart';
-import 'favorite_button.dart';
+import 'package:hayan_app/widget/site_card_overlay_home.dart';
+import '../Models/site_infos.dart';
+import 'vr_button.dart';
 import 'package:hayan_app/Pages/panoramasite.dart';
 
 class SiteCard extends StatelessWidget {
-  final ImageProvider<Object> image;
-  final String siteName;
-  final String address;
+  final SiteInfos siteInfos;
+  final Widget overlay;
+
   const SiteCard({
     Key? key,
-    required this.siteName,
-    required this.address,
-    required this.image,
+    required this.siteInfos,
+    required this.overlay,
   }) : super(key: key);
 
   @override
@@ -23,13 +23,13 @@ class SiteCard extends StatelessWidget {
         height: 400,
         decoration: BoxDecoration(
           image: DecorationImage(
-            alignment: Alignment(0.1, 0),
-            image: image,
+            alignment: const Alignment(0.1, 0),
+            image: AssetImage("assets/images/ZweiBet-2"),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
-            BoxShadow(
+            const BoxShadow(
               blurRadius: 15,
               offset: Offset(0, 12),
               color: Colors.black26,
@@ -38,9 +38,9 @@ class SiteCard extends StatelessWidget {
         ),
         child: Container(
           height: 400,
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
+            gradient: const LinearGradient(colors: [
               Colors.transparent,
               Colors.black12,
               Colors.black54,
@@ -51,52 +51,7 @@ class SiteCard extends StatelessWidget {
             ]),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  VrButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()),
-                      );
-                    },
-                  ),
-                  Spacer(),
-                  OpenMapButton(),
-                ],
-              ),
-              Spacer(),
-              Row(
-                children: [
-                  Container(
-                    width: 150,
-                    child: Text(
-                      siteName,
-                      style: AppTheme.theme.textTheme.headline5,
-                      maxLines: 2,
-                    ),
-                  ),
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: FavoriteButton(
-                      onPressed: () {},
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                height: 12,
-              ),
-              Text(
-                address,
-                style: AppTheme.theme.textTheme.caption,
-              ),
-            ],
-          ),
+          child: overlay,
         ));
   }
 }
