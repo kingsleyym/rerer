@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 class SiteInfos {
   final int id;
   final String? sector;
@@ -27,14 +25,14 @@ class SiteInfos {
   });
 
   SiteInfos.fromJson(Map<String, dynamic> site)
-      : this.id = site["id"] as int,
-        this.sector = site["sector"],
-        this.name = site["name"],
-        this.address = site["address"],
-        this.desc = site["desc"],
-        this.map = site["map"],
-        this.ateliers = site["ateliers"],
-        this.bureaux = site["bureaux"],
-        this.coworking = site["coworking"],
-        this.photos = List<String>.from(site["photos"]);
+      : id = site["id"] as int,
+        sector = site["sector"],
+        name = site["name"],
+        address = site["address"],
+        desc = site["desc"],
+        map = site["map"],
+        ateliers = site["ateliers"],
+        bureaux = site["bureaux"],
+        coworking = site["coworking"],
+        photos = List<String>.from(site["photos"]);
 }

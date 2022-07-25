@@ -1,13 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hayan_app/Pages/homepage.dart';
 import 'package:panorama/panorama.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -16,8 +15,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // ignore: unused_field
   double _lon = 0;
+  // ignore: unused_field
   double _lat = 0;
+  // ignore: unused_field
   double _tilt = 0;
   int _panoId = 0;
   List<Image> panoImages = [
@@ -50,17 +52,17 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         TextButton(
           style: ButtonStyle(
-            shape: MaterialStateProperty.all(CircleBorder()),
+            shape: MaterialStateProperty.all(const CircleBorder()),
             backgroundColor: MaterialStateProperty.all(Colors.black38),
             foregroundColor: MaterialStateProperty.all(Colors.white),
           ),
-          child: Icon(icon),
           onPressed: onPressed,
+          child: Icon(icon),
         ),
         text != null
             ? Container(
-                padding: EdgeInsets.all(4.0),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.all(4.0),
+                decoration: const BoxDecoration(
                     color: Colors.black38,
                     borderRadius: BorderRadius.all(Radius.circular(4))),
                 child: Center(child: Text(text)),
@@ -80,7 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0004.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -101,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 7)),
             ),
           ],
+          child: Image.asset('assets/vr/0004.jpg'),
         );
         break;
       case 2:
@@ -109,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0003.jpg'),
           hotspots: [
             Hotspot(
               latitude: 0.0,
@@ -122,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId++)),
             ),
           ],
+          child: Image.asset('assets/vr/0003.jpg'),
         );
         break;
       case 3:
@@ -130,7 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0002.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -142,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 5)),
             ),
           ],
+          child: Image.asset('assets/vr/0002.jpg'),
         );
         break;
       case 4:
@@ -150,7 +152,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0005.jpg'),
           hotspots: [
             Hotspot(
               latitude: -60.0,
@@ -162,6 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 0)),
             ),
           ],
+          child: Image.asset('assets/vr/0005.jpg'),
         );
         break;
       case 5:
@@ -170,7 +172,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0006.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -182,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 4)),
             ),
           ],
+          child: Image.asset('assets/vr/0006.jpg'),
         );
         break;
       case 6:
@@ -190,7 +192,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0007.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -202,6 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 7)),
             ),
           ],
+          child: Image.asset('assets/vr/0007.jpg'),
         );
         break;
       case 7:
@@ -210,7 +212,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0008.jpg'),
           hotspots: [
             Hotspot(
               latitude: -60.0,
@@ -240,6 +241,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 0)),
             ),
           ],
+          child: Image.asset('assets/vr/0008.jpg'),
         );
         break;
       case 8:
@@ -248,7 +250,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0009.jpg'),
           hotspots: [
             Hotspot(
               latitude: -60.0,
@@ -269,6 +270,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 8)),
             ),
           ],
+          child: Image.asset('assets/vr/0009.jpg'),
         );
         break;
       case 9:
@@ -277,7 +279,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0010.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -289,6 +290,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 4)),
             ),
           ],
+          child: Image.asset('assets/vr/0010.jpg'),
         );
         break;
       case 10:
@@ -297,7 +299,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0011.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -309,6 +310,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 4)),
             ),
           ],
+          child: Image.asset('assets/vr/0011.jpg'),
         );
         break;
       case 11:
@@ -317,7 +319,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0012.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -329,6 +330,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 4)),
             ),
           ],
+          child: Image.asset('assets/vr/0012.jpg'),
         );
         break;
       case 12:
@@ -337,7 +339,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0013.jpg'),
           hotspots: [
             Hotspot(
               latitude: -42.0,
@@ -349,6 +350,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 4)),
             ),
           ],
+          child: Image.asset('assets/vr/0013.jpg'),
         );
         break;
       default:
@@ -356,7 +358,6 @@ class _MyHomePageState extends State<MyHomePage> {
           animSpeed: 1.0,
           sensorControl: SensorControl.Orientation,
           onViewChanged: onViewChanged,
-          child: Image.asset('assets/vr/0005.jpg'),
           hotspots: [
             Hotspot(
               latitude: -60.0,
@@ -369,6 +370,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => setState(() => _panoId = 3)),
             ),
           ],
+          child: Image.asset('assets/vr/0005.jpg'),
         );
     }
     return Scaffold(
@@ -382,10 +384,10 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => const HomePage()),
           );
         },
-        child: Icon(Icons.panorama),
+        child: const Icon(Icons.panorama),
       ),
     );
   }

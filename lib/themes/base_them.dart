@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hayan_app/themes/paletts/base_palette.dart';
 
 class BaseTheme {
-  BasePalette _palette = BasePalette();
+  final BasePalette _palette = BasePalette();
   BasePalette get palette => _palette;
 
   ThemeData get themeData => ThemeData(
@@ -10,6 +10,7 @@ class BaseTheme {
         brightness: Brightness.light,
         scaffoldBackgroundColor: _palette.background,
         primaryColor: _palette.primaryColor,
+        // ignore: deprecated_member_use
         accentColor: _palette.accentColor,
         focusColor: _palette.secondaryColor,
         hintColor: _palette.textBody,
@@ -36,7 +37,7 @@ class BaseTheme {
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
-            contentPadding: EdgeInsets.all(12),
+            contentPadding: const EdgeInsets.all(12),
             fillColor: _palette.secondaryColor,
             filled: true,
             prefixStyle: TextStyle(

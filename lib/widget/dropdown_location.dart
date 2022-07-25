@@ -4,6 +4,7 @@ import 'package:hayan_app/themes/app_theme.dart';
 class DropDownLocation extends StatelessWidget {
   final String? location;
   final List<String> elements;
+  // ignore: non_constant_identifier_names
   final Function(String? Location)? onLocationChanged;
   const DropDownLocation({
     Key? key,
@@ -26,7 +27,7 @@ class DropDownLocation extends StatelessWidget {
 
   Widget _dropdown() {
     return DropdownButton(
-        hint: Text("Emplacement"),
+        hint: const Text("Emplacement"),
         underline: Container(),
         onChanged: onLocationChanged,
         style: AppTheme.theme.textTheme.bodyText2?.copyWith(fontSize: 12),
@@ -45,23 +46,21 @@ class DropDownLocation extends StatelessWidget {
   }
 
   Widget _currentLocation(String? location) {
-    return Container(
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.all(4),
-            child: Icon(
-              Icons.location_on,
-              size: 16,
-              color: AppTheme.palette.accentColor,
-            ),
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(4),
+          child: Icon(
+            Icons.location_on,
+            size: 16,
+            color: AppTheme.palette.accentColor,
           ),
-          Text(
-            location ?? "",
-            style: AppTheme.theme.textTheme.headline4,
-          ),
-        ],
-      ),
+        ),
+        Text(
+          location ?? "",
+          style: AppTheme.theme.textTheme.headline4,
+        ),
+      ],
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hayan_app/Pages/homepage.dart';
 import 'package:hayan_app/themes/app_theme.dart';
-import 'package:hayan_app/themes/base_them.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +13,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return MaterialApp(
       title: 'Flutter hayan',
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
-            contentPadding: EdgeInsets.all(12),
+            contentPadding: const EdgeInsets.all(12),
             fillColor: AppTheme.palette.secondaryColor,
             filled: true,
             prefixStyle: TextStyle(
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
             )),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
