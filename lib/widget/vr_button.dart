@@ -15,7 +15,7 @@ class VrButton extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(50),
         clipBehavior: Clip.antiAlias,
-        color: AppTheme.palette.buttonOverlayBorder,
+        color: AppTheme.palette.buttonOverlay,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -23,7 +23,7 @@ class VrButton extends StatelessWidget {
               height: 36,
               width: 36,
               decoration: BoxDecoration(
-                  color: AppTheme.palette.inputTextField,
+                  color: AppTheme.palette.secondaryColor,
                   borderRadius: BorderRadius.circular(50)),
             ),
             Container(

@@ -27,7 +27,7 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(16, 48, 16, 48),
+        padding: EdgeInsets.fromLTRB(16, 16, 16, 48),
         child: _pageBuilder(),
       ),
     );

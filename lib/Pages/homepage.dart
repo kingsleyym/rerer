@@ -192,12 +192,46 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _header() {
-    return Row(
-      children: [
-        Column(children: []),
-        const Spacer(),
-        const NotifyIconButton(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Row(
+        children: [
+          Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "emplacement",
+                      style: AppTheme.theme.textTheme.bodyText2
+                          ?.copyWith(fontSize: 12),
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      size: 16,
+                      color: AppTheme.palette.accentColor,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      size: 16,
+                      color: AppTheme.palette.accentColor,
+                    ),
+                    Text(
+                      "DUBAI West",
+                      style: AppTheme.theme.textTheme.headline4,
+                    ),
+                  ],
+                )
+              ]),
+          const Spacer(),
+          const NotifyIconButton(),
+        ],
+      ),
     );
   }
 }
