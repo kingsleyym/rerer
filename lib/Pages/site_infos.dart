@@ -71,73 +71,99 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
                   ]),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          VrButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MyHomePage()),
-                              );
-                            },
-                          ),
-                          const Spacer(),
-                          const OpenMapButton(),
-                        ],
-                      ),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          Container(
-                            width: 150,
-                            child: Text(
-                              widget.siteinfos.name ?? "",
-                              style: AppTheme.theme.textTheme.headline5,
-                              maxLines: 2,
-                            ),
-                          ),
-                          const Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
-                            child: FavoriteButton(
-                              onPressed: () {},
-                            ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        height: 12,
-                      ),
-                      Text(
-                        widget.siteinfos.address ?? "",
-                        style: AppTheme.theme.textTheme.caption,
-                      ),
-                    ],
-                  ),
+                child: SideCardOverlay(
+                  context: context,
+                  widget: widget,
                 ),
               )),
-          Container(
-            height: 150,
-            width: 150,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: widget.siteinfos.photos?.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: Image.asset(widget.siteinfos.photos![index]),
-                  );
-                }),
-          ),
           Text(
             widget.siteinfos.ateliers.toString(),
           )
         ],
       ),
+    );
+  }
+}
+
+class SideCardOverlay extends StatelessWidget {
+  const SideCardOverlay({
+    Key? key,
+    required this.context,
+    required this.widget,
+  }) : super(key: key);
+
+  final BuildContext context;
+  final SiteInfosPage widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            VrButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+            ),
+            const Spacer(),
+            const OpenMapButton(),
+          ],
+        ),
+        const Spacer(),
+        Row(
+          children: [
+            Container(
+              width: 150,
+              child: Text(
+                widget.siteinfos.name ?? "",
+                style: AppTheme.theme.textTheme.headline5,
+                maxLines: 2,
+              ),
+            ),
+            Spacer(),
+            Positioned(
+              top: -200,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, top: 1.0),
+                child: Container(
+                  height: 120,
+                  width: 80,
+                  clipBehavior: Clip.none,
+                  child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      clipBehavior: Clip.none,
+                      scrollDirection: Axis.vertical,
+                      itemCount: widget.siteinfos.photos?.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                    image: (AssetImage(
+                                        widget.siteinfos.photos![index])),
+                                    fit: BoxFit.cover,
+                                  ))),
+                        );
+                      }),
+                ),
+              ),
+            )
+          ],
+        ),
+        Text(
+          widget.siteinfos.address ?? "",
+          style: AppTheme.theme.textTheme.caption,
+        ),
+      ],
     );
   }
 }

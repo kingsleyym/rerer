@@ -5,7 +5,7 @@
         "name": "Pole DUBAI Nord Villa",
         "address": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
-        "pic": "assets/images/ZweiBet-17.jpg",
+        "pic": "assets/images/ZweiBet-30.jpg",
         "contacts": [
             {
                 "name": "Tom Leitener",
@@ -21,11 +21,11 @@
             }
         ],
         "photos": [
-            "assets/images/ZweiBet-30.jpg",
-            "assets/images/ZweiBet-29.jpg",
-            "assets/images/ZweiBet-28.jpg",
-            "assets/images/ZweiBet-27.jpg",
-            "assets/images/ZweiBet-26.jpg"
+            "assets/images/ZweiBet-16.jpg",
+            "assets/images/ZweiBet-17.jpg",
+            "assets/images/ZweiBet-18.jpg",
+            "assets/images/ZweiBet-19.jpg",
+            "assets/images/ZweiBet-20.jpg"
         ],
         "ateliers": "10",
         "bureaux": "2",
@@ -54,11 +54,11 @@
             }
         ],
         "photos": [
-            "assets/images/ZweiBet-30.jpg",
-            "assets/images/ZweiBet-29.jpg",
-            "assets/images/ZweiBet-28.jpg",
-            "assets/images/ZweiBet-27.jpg",
-            "assets/images/ZweiBet-26.jpg"
+            "assets/images/ZweiBet-21.jpg",
+            "assets/images/ZweiBet-22.jpg",
+            "assets/images/ZweiBet-23.jpg",
+            "assets/images/ZweiBet-24.jpg",
+            "assets/images/ZweiBet-25.jpg"
         ],
         "ateliers": "20",
         "buraux": "2",
@@ -87,15 +87,15 @@
             }
         ],
         "photos": [
-            "assets/images/ZweiBet-30.jpg",
-            "assets/images/ZweiBet-29.jpg",
-            "assets/images/ZweiBet-28.jpg",
+            "assets/images/ZweiBet-26.jpg",
             "assets/images/ZweiBet-27.jpg",
-            "assets/images/ZweiBet-26.jpg"
+            "assets/images/ZweiBet-28.jpg",
+            "assets/images/ZweiBet-29.jpg",
+            "assets/images/ZweiBet-30.jpg"
         ],
         "ateliers": "1030",
         "buraux": "2",
         "conoring": "25",
-        "map": "assets/images/ZweiBet-30.jpg"
+        "map": "assets/images/ZweiBet-17.jpg"
     }
 ]
