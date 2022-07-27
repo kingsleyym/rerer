@@ -15,7 +15,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: _palette.primaryColor,
@@ -48,7 +48,7 @@ class _NavBarState extends State<NavBar> {
     required int index,
     required IconData icon,
     VoidCallback? onPressed,
-    int selectedIndex: 0,
+    int selectedIndex = 0,
   }) {
     bool isSelected = selectedIndex == index;
     return Material(

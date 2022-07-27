@@ -18,7 +18,7 @@ class SearchBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
             ),
             hintText: "Rechercher",
-            prefixIcon: Icon(Icons.search_rounded),
+            prefixIcon: const Icon(Icons.search_rounded),
             suffixIcon: _searchButton()),
       ),
     );
@@ -27,13 +27,13 @@ class SearchBar extends StatelessWidget {
 
 Widget _searchButton() {
   return Container(
-      padding: EdgeInsets.all(6),
+      padding: const EdgeInsets.all(6),
       child: Material(
           color: AppTheme.palette.primaryColor,
           borderRadius: BorderRadius.circular(9),
-          child: InkWell(
-            child: Icon(Icons.checklist_rtl, color: Colors.white),
+          child: const InkWell(
             onTap: onPressed,
+            child: Icon(Icons.checklist_rtl, color: Colors.white),
           )));
 }
 

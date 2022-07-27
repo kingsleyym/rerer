@@ -1,17 +1,14 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hayan_app/Models/site_infos.dart';
 import 'package:hayan_app/Pages/panoramasite.dart';
 import 'package:hayan_app/Pages/site_infos.dart';
-import 'package:hayan_app/widget/dropdown_location.dart';
 import 'package:hayan_app/widget/notify_icon_button.dart';
 import 'package:hayan_app/widget/search_bar.dart';
-import 'package:hayan_app/widget/site_card.dart';
-import 'package:hayan_app/widget/site_card_overlay_home.dart';
 import '../themes/app_theme.dart';
 import '../widget/favorite_button.dart';
 import '../widget/nav_bar.dart';
+// ignore: library_prefixes
 import 'package:flutter/services.dart' as rootBundle;
 
 import '../widget/open_map_button.dart';
@@ -38,7 +35,6 @@ class _HomePageState extends State<HomePage> {
             future: ReadJsonData(),
             builder: (context, data) {
               if (data.hasData) {
-                var siteinfo = data.data as List<SiteInfos>;
                 return _pageBuilder(data.data);
               } else {
                 return Container();
@@ -50,6 +46,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // ignore: non_constant_identifier_names, avoid_types_as_parameter_names
   Widget _pageBuilder(SiteInfos) {
     final siteInfos = SiteInfos;
 
@@ -107,8 +104,8 @@ class _HomePageState extends State<HomePage> {
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  const BoxShadow(
+                boxShadow: const [
+                  BoxShadow(
                     blurRadius: 15,
                     offset: Offset(0, 12),
                     color: Colors.black26,
@@ -130,59 +127,58 @@ class _HomePageState extends State<HomePage> {
                   ]),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          VrButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MyHomePage()),
-                              );
-                            },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        VrButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyHomePage()),
+                            );
+                          },
+                        ),
+                        const Spacer(),
+                        const OpenMapButton(),
+                      ],
+                    ),
+                    const Spacer(),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          child: Text(
+                            siteInfos.name ?? "",
+                            style: AppTheme.theme.textTheme.headline5,
+                            maxLines: 2,
                           ),
-                          const Spacer(),
-                          const OpenMapButton(),
-                        ],
-                      ),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          Container(
-                            width: 150,
-                            child: Text(
-                              siteInfos.name ?? "",
-                              style: AppTheme.theme.textTheme.headline5,
-                              maxLines: 2,
-                            ),
+                        ),
+                        const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 18.0),
+                          child: FavoriteButton(
+                            onPressed: () {},
                           ),
-                          const Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
-                            child: FavoriteButton(
-                              onPressed: () {},
-                            ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        height: 12,
-                      ),
-                      Text(
-                        siteInfos.address ?? "",
-                        style: AppTheme.theme.textTheme.caption,
-                      ),
-                    ],
-                  ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 12,
+                    ),
+                    Text(
+                      siteInfos.address ?? "",
+                      style: AppTheme.theme.textTheme.caption,
+                    ),
+                  ],
                 ),
               ))),
     );
   }
 
+  // ignore: non_constant_identifier_names
   Future<List<SiteInfos>> ReadJsonData() async {
     final jsondata =
         await rootBundle.rootBundle.loadString('jsonfile/sites.json');

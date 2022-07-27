@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:hayan_app/Pages/panoramasite.dart';
 import 'package:hayan_app/themes/app_theme.dart';
-import 'package:hayan_app/widget/site_card.dart';
 import 'package:hayan_app/Models/site_infos.dart';
-
-import '../widget/favorite_button.dart';
 import '../widget/open_map_button.dart';
-import '../widget/site_card_overlay_info.dart';
 import '../widget/vr_button.dart';
 
 class SiteInfosPage extends StatefulWidget {
@@ -27,60 +22,57 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(16, 16, 16, 48),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 48),
         child: _pageBuilder(),
       ),
     );
   }
 
   Widget _pageBuilder() {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              height: 400,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  alignment: const Alignment(0.1, 0),
-                  image:
-                      AssetImage(widget.siteinfos.photos?.elementAt(2) ?? ""),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  const BoxShadow(
-                    blurRadius: 15,
-                    offset: Offset(0, 12),
-                    color: Colors.black26,
-                  )
-                ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+            height: 400,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                alignment: const Alignment(0.1, 0),
+                image: AssetImage(widget.siteinfos.photos?.elementAt(2) ?? ""),
+                fit: BoxFit.cover,
               ),
-              child: Container(
-                height: 400,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(colors: [
-                    Colors.transparent,
-                    Colors.black12,
-                    Colors.black54,
-                  ], stops: [
-                    0.5,
-                    0.75,
-                    1
-                  ]),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: SideCardOverlay(
-                  context: context,
-                  widget: widget,
-                ),
-              )),
-          Text(
-            widget.siteinfos.ateliers.toString(),
-          )
-        ],
-      ),
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: const [
+                BoxShadow(
+                  blurRadius: 15,
+                  offset: Offset(0, 12),
+                  color: Colors.black26,
+                )
+              ],
+            ),
+            child: Container(
+              height: 400,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(colors: [
+                  Colors.transparent,
+                  Colors.black12,
+                  Colors.black54,
+                ], stops: [
+                  0.5,
+                  0.75,
+                  1
+                ]),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: SideCardOverlay(
+                context: context,
+                widget: widget,
+              ),
+            )),
+        Text(
+          widget.siteinfos.ateliers.toString(),
+        )
+      ],
     );
   }
 }
@@ -117,7 +109,7 @@ class SideCardOverlay extends StatelessWidget {
         const Spacer(),
         Row(
           children: [
-            Container(
+            SizedBox(
               width: 150,
               child: Text(
                 widget.siteinfos.name ?? "",
@@ -125,7 +117,7 @@ class SideCardOverlay extends StatelessWidget {
                 maxLines: 2,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Positioned(
               top: -200,
               child: Padding(
@@ -135,7 +127,7 @@ class SideCardOverlay extends StatelessWidget {
                   width: 80,
                   clipBehavior: Clip.none,
                   child: ListView.builder(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       clipBehavior: Clip.none,
                       scrollDirection: Axis.vertical,
                       itemCount: widget.siteinfos.photos?.length,

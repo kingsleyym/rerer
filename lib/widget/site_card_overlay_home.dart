@@ -15,58 +15,55 @@ class SiteCardOverlayHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, "site-Infos", arguments: siteInfos);
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                VrButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyHomePage()),
-                    );
-                  },
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, "site-Infos", arguments: siteInfos);
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              VrButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage()),
+                  );
+                },
+              ),
+              const Spacer(),
+              const OpenMapButton(),
+            ],
+          ),
+          const Spacer(),
+          Row(
+            children: [
+              SizedBox(
+                width: 150,
+                child: Text(
+                  siteInfos.name ?? "",
+                  style: AppTheme.theme.textTheme.headline5,
+                  maxLines: 2,
                 ),
-                const Spacer(),
-                const OpenMapButton(),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              children: [
-                Container(
-                  width: 150,
-                  child: Text(
-                    siteInfos.name ?? "",
-                    style: AppTheme.theme.textTheme.headline5,
-                    maxLines: 2,
-                  ),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0),
+                child: FavoriteButton(
+                  onPressed: () {},
                 ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: FavoriteButton(
-                    onPressed: () {},
-                  ),
-                )
-              ],
-            ),
-            Container(
-              height: 12,
-            ),
-            Text(
-              siteInfos.address ?? "",
-              style: AppTheme.theme.textTheme.caption,
-            ),
-          ],
-        ),
+              )
+            ],
+          ),
+          Container(
+            height: 12,
+          ),
+          Text(
+            siteInfos.address ?? "",
+            style: AppTheme.theme.textTheme.caption,
+          ),
+        ],
       ),
     );
   }

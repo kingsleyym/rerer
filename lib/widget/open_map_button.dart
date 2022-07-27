@@ -17,8 +17,8 @@ class OpenMapButton extends StatelessWidget {
             onPressed: onpressed,
             style: TextButton.styleFrom(
               visualDensity: VisualDensity.compact,
-              minimumSize: Size(0, 48),
-              padding: EdgeInsets.symmetric(horizontal: 24),
+              minimumSize: const Size(0, 48),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,

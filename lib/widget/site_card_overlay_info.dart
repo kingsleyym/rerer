@@ -12,53 +12,51 @@ class SiteCardOverlayInfos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              VrButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage()),
-                  );
-                },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            VrButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+            ),
+            const Spacer(),
+            const OpenMapButton(),
+          ],
+        ),
+        const Spacer(),
+        Row(
+          children: [
+            SizedBox(
+              width: 150,
+              child: Text(
+                "Two Becds Apartment",
+                style: AppTheme.theme.textTheme.headline5,
+                maxLines: 2,
               ),
-              const Spacer(),
-              const OpenMapButton(),
-            ],
-          ),
-          const Spacer(),
-          Row(
-            children: [
-              Container(
-                width: 150,
-                child: Text(
-                  "Two Becds Apartment",
-                  style: AppTheme.theme.textTheme.headline5,
-                  maxLines: 2,
-                ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(top: 18.0),
+              child: FavoriteButton(
+                onPressed: () {},
               ),
-              const Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0),
-                child: FavoriteButton(
-                  onPressed: () {},
-                ),
-              )
-            ],
-          ),
-          Container(
-            height: 12,
-          ),
-          Text(
-            "dubai 123",
-            style: AppTheme.theme.textTheme.caption,
-          ),
-        ],
-      ),
+            )
+          ],
+        ),
+        Container(
+          height: 12,
+        ),
+        Text(
+          "dubai 123",
+          style: AppTheme.theme.textTheme.caption,
+        ),
+      ],
     );
   }
 }
