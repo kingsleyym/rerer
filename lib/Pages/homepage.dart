@@ -2,13 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hayan_app/Models/site_infos.dart';
+import 'package:hayan_app/Pages/panoramasite.dart';
+import 'package:hayan_app/Pages/site_infos.dart';
 import 'package:hayan_app/widget/dropdown_location.dart';
 import 'package:hayan_app/widget/notify_icon_button.dart';
 import 'package:hayan_app/widget/search_bar.dart';
 import 'package:hayan_app/widget/site_card.dart';
 import 'package:hayan_app/widget/site_card_overlay_home.dart';
+import '../themes/app_theme.dart';
+import '../widget/favorite_button.dart';
 import '../widget/nav_bar.dart';
 import 'package:flutter/services.dart' as rootBundle;
+
+import '../widget/open_map_button.dart';
+import '../widget/vr_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,17 +24,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-Future<List<SiteInfos>> ReadJsonData() async {
-  final jsondata = await rootBundle.rootBundle.loadString('assets/sites.json');
-  final list = json.decode(jsondata) as List<dynamic>;
-  return list.map((e) => SiteInfos.fromJson(e)).toList();
-}
-
 class _HomePageState extends State<HomePage> {
-  PageController _currentLocation = PageController(initialPage: 0);
-  final _pageController = PageController(viewportFraction: 1);
-  late SiteInfos _siteInfos;
-  late SiteCardOverlayHome _overlay;
+  final _pageController = PageController(viewportFraction: 1, initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +35,11 @@ class _HomePageState extends State<HomePage> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height - 50,
           child: FutureBuilder(
-            future: annuaireSrv.load(_annuaireFile),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return _pageBuilder(snapshot.data as Annuaire);
+            future: ReadJsonData(),
+            builder: (context, data) {
+              if (data.hasData) {
+                var siteinfo = data.data as List<SiteInfos>;
+                return _pageBuilder(data.data);
               } else {
                 return Container();
               }
@@ -51,10 +50,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _pageBuilder(Annuaire annuaire) {
-    final sites = annuaire.sites;
-    final SiteInfos currentsite = sites[_currentLocation]!;
-    final _overlay = SiteCardOverlayHome(siteInfos: currentsite);
+  Widget _pageBuilder(SiteInfos) {
+    final siteInfos = SiteInfos;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,16 +69,106 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           flex: 20,
           child: PageView.builder(
-            itemCount: 3,
+            clipBehavior: Clip.none,
+            itemCount: siteInfos.length,
             physics: const BouncingScrollPhysics(),
             controller: _pageController,
-            itemBuilder: ((context, index) {
-              return Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 8),
-                child: SiteCard(
-                  overlay: _overlay,
-                  siteInfos: currentsite,
-                ),
+            itemBuilder: ((context, int index) {
+              final siteInfos = SiteInfos[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      PageRouteBuilder(pageBuilder: (context, animation, _) {
+                    return SiteInfosPage(siteinfos: siteInfos);
+                  }));
+                },
+                child: Padding(
+                    padding: EdgeInsets.only(left: 8.0, right: 8),
+                    child: Container(
+                        clipBehavior: Clip.none,
+                        height: 400,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            alignment: const Alignment(0.1, 0),
+                            image: AssetImage(siteInfos.pic ?? ""),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            const BoxShadow(
+                              blurRadius: 15,
+                              offset: Offset(0, 12),
+                              color: Colors.black26,
+                            )
+                          ],
+                        ),
+                        child: Container(
+                          height: 400,
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(colors: [
+                              Colors.transparent,
+                              Colors.black12,
+                              Colors.black54,
+                            ], stops: [
+                              0.5,
+                              0.75,
+                              1
+                            ]),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    VrButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const MyHomePage()),
+                                        );
+                                      },
+                                    ),
+                                    const Spacer(),
+                                    const OpenMapButton(),
+                                  ],
+                                ),
+                                const Spacer(),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 150,
+                                      child: Text(
+                                        siteInfos.name ?? "",
+                                        style:
+                                            AppTheme.theme.textTheme.headline5,
+                                        maxLines: 2,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 18.0),
+                                      child: FavoriteButton(
+                                        onPressed: () {},
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Container(
+                                  height: 12,
+                                ),
+                                Text(
+                                  siteInfos.address ?? "",
+                                  style: AppTheme.theme.textTheme.caption,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ))),
               );
             }),
           ),
@@ -94,24 +181,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Future<List<SiteInfos>> ReadJsonData() async {
+    final jsondata =
+        await rootBundle.rootBundle.loadString('jsonfile/sites.json');
+    final list = json.decode(jsondata) as List<dynamic>;
+
+    return list.map((e) => SiteInfos.fromJson(e)).toList();
+  }
+
   Widget _header() {
     return Row(
       children: [
-        Column(children: [
-          DropDownLocation(
-            location: _pageController as String,
-            elements: const [
-              "DUBAI Nord",
-              "DUBAI East",
-              "DUBAI Sud",
-            ],
-            onLocationChanged: (Location) {
-              setState(() {
-                _currentLocation = Location;
-              });
-            },
-          ),
-        ]),
+        Column(children: []),
         const Spacer(),
         const NotifyIconButton(),
       ],

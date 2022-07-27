@@ -2,7 +2,7 @@
     {
         "id": 0,
         "sector": "DUBAI Sud",
-        "name": "Pole DUBAI Sud House",
+        "name": "Pole DUBAI Nord Villa",
         "address": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
         "pic": "assets/images/ZweiBet-17.jpg",
@@ -36,7 +36,7 @@
         "id": 1,
         "sector": "DUBAI Sud",
         "name": "Pole DUBAI Sud House",
-        "adress": "Die adress 123",
+        "address": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
         "pic": "assets/images/ZweiBet-26.jpg",
         "contacts": [
@@ -60,7 +60,7 @@
             "assets/images/ZweiBet-27.jpg",
             "assets/images/ZweiBet-26.jpg"
         ],
-        "ateliers": "10",
+        "ateliers": "20",
         "buraux": "2",
         "conoring": "25",
         "map": "assets/images/ZweiBet-30.jpg"
@@ -68,8 +68,8 @@
     {
         "id": 2,
         "sector": "DUBAI Sud",
-        "name": "Pole DUBAI Sud House",
-        "adress": "Die adress 123",
+        "name": "Pole DUBAI West House",
+        "address": "Die adress 123",
         "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
         "pic": "assets/images/ZweiBet-29.jpg",
         "contacts": [
@@ -93,7 +93,7 @@
             "assets/images/ZweiBet-27.jpg",
             "assets/images/ZweiBet-26.jpg"
         ],
-        "ateliers": "10",
+        "ateliers": "1030",
         "buraux": "2",
         "conoring": "25",
         "map": "assets/images/ZweiBet-30.jpg"

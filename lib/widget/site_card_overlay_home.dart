@@ -8,8 +8,10 @@ import 'open_map_button.dart';
 
 class SiteCardOverlayHome extends StatelessWidget {
   final SiteInfos siteInfos;
-  const SiteCardOverlayHome({Key? key, required this.siteInfos})
-      : super(key: key);
+  const SiteCardOverlayHome({
+    Key? key,
+    required this.siteInfos,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

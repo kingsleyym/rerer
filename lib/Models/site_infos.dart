@@ -1,38 +1,82 @@
 class SiteInfos {
-  final int id;
-  final String? sector;
-  final String? name;
-  final String? address;
-  final String? desc;
-  final String? map;
-  final int? ateliers;
-  final int? bureaux;
-  final int? coworking;
-
-  final List<String>? photos;
+  int? id;
+  String? sector;
+  String? name;
+  String? address;
+  String? desc;
+  String? pic;
+  List<Contact>? contacts;
+  List<String>? photos;
+  String? ateliers;
+  String? bureaux;
+  String? coworking;
+  String? map;
+  String? adress;
+  String? buraux;
+  String? conoring;
 
   SiteInfos({
-    required this.id,
+    this.id,
     this.sector,
     this.name,
     this.address,
     this.desc,
-    this.map,
-    required this.ateliers,
-    required this.bureaux,
-    required this.coworking,
+    this.pic,
+    this.contacts,
     this.photos,
+    this.ateliers,
+    this.bureaux,
+    this.coworking,
+    this.map,
+    this.adress,
+    this.buraux,
+    this.conoring,
   });
 
-  SiteInfos.fromJson(Map<String, dynamic> site)
-      : id = site["id"] as int,
-        sector = site["sector"],
-        name = site["name"],
-        address = site["address"],
-        desc = site["desc"],
-        map = site["map"],
-        ateliers = site["ateliers"],
-        bureaux = site["bureaux"],
-        coworking = site["coworking"],
-        photos = List<String>.from(site["photos"]);
+  SiteInfos.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    sector = json["sector"];
+    name = json["name"];
+    address = json["address"];
+    desc = json["desc"];
+    pic = json["pic"];
+    contacts =
+        List<Contact>.from(json["contacts"].map((x) => Contact.fromJson(x)));
+    photos = List<String>.from(json["photos"].map((x) => x));
+    ateliers = json["ateliers"];
+    bureaux = json["bureaux"];
+    coworking = json["coworking"];
+    map = json["map"];
+    adress = json["adress"];
+    buraux = json["buraux"];
+    conoring = json["conoring"];
+  }
+}
+
+class Contact {
+  Contact({
+    this.name,
+    this.function,
+    this.email,
+    this.phone,
+  });
+
+  String? name;
+  String? function;
+  String? email;
+  String? phone;
+
+  factory Contact.fromJson(Map<String, dynamic> json) => Contact(
+        name: json["name"],
+        function: json["function"],
+        email: json["email"],
+        phone: json["phone"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "function": function,
+        "email": email,
+        "phone": phone,
+      };
 }
