@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hayan_app/Pages/panoramasite.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/Models/site_infos.dart';
+import 'package:imageview360/imageview360.dart';
 import '../widget/open_map_button.dart';
 import '../widget/vr_button.dart';
 
@@ -18,6 +19,34 @@ class SiteInfosPage extends StatefulWidget {
 }
 
 class _SiteInfosPageState extends State<SiteInfosPage> {
+  List<ImageProvider> imageList = <ImageProvider>[];
+  bool autoRotate = true;
+  int rotationCount = 20;
+  int swipeSensitivity = 3;
+  bool allowSwipeToRotate = true;
+  RotationDirection rotationDirection = RotationDirection.anticlockwise;
+  Duration frameChangeDuration = Duration(milliseconds: 24);
+  bool imagePrecached = false;
+
+  @override
+  void initState() {
+    //* To load images from assets after first frame build up.
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => updateImageList(context));
+    super.initState();
+  }
+
+  void updateImageList(BuildContext context) async {
+    for (int i = 1; i <= 18; i++) {
+      imageList.add(AssetImage('assets/images/369/$i.png'));
+      //* To precache images so that when required they are loaded faster.
+      await precacheImage(AssetImage('assets/images/369/$i.png'), context);
+    }
+    setState(() {
+      imagePrecached = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +100,22 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
             )),
         Text(
           widget.siteinfos.ateliers.toString(),
-        )
+        ),
+        (imagePrecached == true)
+            ? ImageView360(
+                key: UniqueKey(),
+                imageList: imageList,
+                autoRotate: true,
+                rotationCount: rotationCount,
+                rotationDirection: RotationDirection.anticlockwise,
+                frameChangeDuration: frameChangeDuration,
+                swipeSensitivity: swipeSensitivity,
+                allowSwipeToRotate: allowSwipeToRotate,
+                onImageIndexChanged: (currentImageIndex) {
+                  print("currentImageIndex: $currentImageIndex");
+                },
+              )
+            : Text("Pre-Caching images..."),
       ],
     );
   }

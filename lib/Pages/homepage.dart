@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
             future: ReadJsonData(),
             builder: (context, data) {
               if (data.hasData) {
+                var siteinfo = data.data as List<SiteInfos>;
                 return _pageBuilder(data.data);
               } else {
                 return Container();
@@ -46,7 +47,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ignore: non_constant_identifier_names, avoid_types_as_parameter_names
   Widget _pageBuilder(SiteInfos) {
     final siteInfos = SiteInfos;
 
@@ -104,8 +104,8 @@ class _HomePageState extends State<HomePage> {
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: const [
-                  BoxShadow(
+                boxShadow: [
+                  const BoxShadow(
                     blurRadius: 15,
                     offset: Offset(0, 12),
                     color: Colors.black26,
@@ -127,58 +127,59 @@ class _HomePageState extends State<HomePage> {
                   ]),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        VrButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MyHomePage()),
-                            );
-                          },
-                        ),
-                        const Spacer(),
-                        const OpenMapButton(),
-                      ],
-                    ),
-                    const Spacer(),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 150,
-                          child: Text(
-                            siteInfos.name ?? "",
-                            style: AppTheme.theme.textTheme.headline5,
-                            maxLines: 2,
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          VrButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyHomePage()),
+                              );
+                            },
                           ),
-                        ),
-                        const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18.0),
-                          child: FavoriteButton(
-                            onPressed: () {},
+                          const Spacer(),
+                          const OpenMapButton(),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        children: [
+                          Container(
+                            width: 150,
+                            child: Text(
+                              siteInfos.name ?? "",
+                              style: AppTheme.theme.textTheme.headline5,
+                              maxLines: 2,
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      height: 12,
-                    ),
-                    Text(
-                      siteInfos.address ?? "",
-                      style: AppTheme.theme.textTheme.caption,
-                    ),
-                  ],
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 18.0),
+                            child: FavoriteButton(
+                              onPressed: () {},
+                            ),
+                          )
+                        ],
+                      ),
+                      Container(
+                        height: 12,
+                      ),
+                      Text(
+                        siteInfos.address ?? "",
+                        style: AppTheme.theme.textTheme.caption,
+                      ),
+                    ],
+                  ),
                 ),
               ))),
     );
   }
 
-  // ignore: non_constant_identifier_names
   Future<List<SiteInfos>> ReadJsonData() async {
     final jsondata =
         await rootBundle.rootBundle.loadString('jsonfile/sites.json');
