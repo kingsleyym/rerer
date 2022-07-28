@@ -4,7 +4,7 @@
         "sector": "DUBAI Sud",
         "name": "Pole DUBAI Nord Villa",
         "address": "Die adress 123",
-        "desc": "lsfdkj lsdjf slkdkfj lsd jf slkdjf  slkjd f sljkdf",
+        "desc": "Thankful for the change of subject, Cynthia launched into a description of her latest conquests with the cat, again tucking that nagging doubt to the back of her mind.",
         "pic": "assets/images/ZweiBet-30.jpg",
         "contacts": [
             {
@@ -62,7 +62,7 @@
         ],
         "ateliers": "20",
         "buraux": "2",
-        "conoring": "25",
+        "coworking": "25",
         "map": "assets/images/ZweiBet-30.jpg"
     },
     {
@@ -93,9 +93,9 @@
             "assets/images/ZweiBet-29.jpg",
             "assets/images/ZweiBet-30.jpg"
         ],
-        "ateliers": "1030",
+        "ateliers": "10",
         "buraux": "2",
-        "conoring": "25",
+        "coworking": "25",
         "map": "assets/images/ZweiBet-17.jpg"
     }
 ]

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class NotifyIconButton extends StatelessWidget {
   final bool isNotified;
-  const NotifyIconButton({Key? key, this.isNotified = false}) : super(key: key);
+  const NotifyIconButton({Key? key, this.isNotified = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

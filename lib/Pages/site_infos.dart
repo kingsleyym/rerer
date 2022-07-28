@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hayan_app/Pages/panoramasite.dart';
 import 'package:hayan_app/themes/app_theme.dart';
 import 'package:hayan_app/Models/site_infos.dart';
 import 'package:imageview360/imageview360.dart';
-import '../widget/open_map_button.dart';
-import '../widget/vr_button.dart';
+import '../widget/site_card_overlay_info.dart';
 
 class SiteInfosPage extends StatefulWidget {
   const SiteInfosPage({
@@ -21,11 +19,11 @@ class SiteInfosPage extends StatefulWidget {
 class _SiteInfosPageState extends State<SiteInfosPage> {
   List<ImageProvider> imageList = <ImageProvider>[];
   bool autoRotate = true;
-  int rotationCount = 20;
-  int swipeSensitivity = 3;
+  int rotationCount = 1;
+  int swipeSensitivity = 1;
   bool allowSwipeToRotate = true;
-  RotationDirection rotationDirection = RotationDirection.anticlockwise;
-  Duration frameChangeDuration = Duration(milliseconds: 24);
+  RotationDirection rotationDirection = RotationDirection.clockwise;
+  Duration frameChangeDuration = const Duration(milliseconds: 60);
   bool imagePrecached = false;
 
   @override
@@ -37,7 +35,7 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
   }
 
   void updateImageList(BuildContext context) async {
-    for (int i = 1; i <= 18; i++) {
+    for (int i = 1; i <= 90; i++) {
       imageList.add(AssetImage('assets/images/369/$i.png'));
       //* To precache images so that when required they are loaded faster.
       await precacheImage(AssetImage('assets/images/369/$i.png'), context);
@@ -93,113 +91,119 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
                 ]),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: SideCardOverlay(
+              child: SideCardOverlayIn(
                 context: context,
                 widget: widget,
               ),
             )),
-        Text(
-          widget.siteinfos.ateliers.toString(),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: Text(
+                  "Description",
+                  style: AppTheme.theme.textTheme.subtitle2,
+                ),
+              ),
+              Row(
+                children: [
+                  _roomInfo(
+                      text: "${widget.siteinfos.ateliers} ateliers",
+                      icon: Icons.meeting_room_outlined),
+                  _roomInfo(
+                      text: "${widget.siteinfos.ateliers} ateliers",
+                      icon: Icons.house_outlined),
+                ],
+              ),
+              _roomInfo(
+                  text: "${widget.siteinfos.coworking} escapes de coworkiig",
+                  icon: Icons.house_outlined),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Text(
+                  widget.siteinfos.desc ?? "",
+                  style: AppTheme.theme.textTheme.bodyText2,
+                ),
+              ),
+              Stack(clipBehavior: Clip.none, children: [
+                Positioned(
+                  top: 80,
+                  height: 80,
+                  width: 250,
+                  left: 100,
+                  child: Container(
+                    height: 120,
+                    decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 15,
+                            offset: Offset(0, 12),
+                            color: Colors.black26,
+                          )
+                        ],
+                        color: AppTheme.palette.accentColor,
+                        borderRadius: BorderRadius.circular(45)),
+                  ),
+                ),
+                Container(decoration: BoxDecoration(), child: _imaGere())
+              ]),
+            ],
+          ),
         ),
-        (imagePrecached == true)
-            ? ImageView360(
-                key: UniqueKey(),
-                imageList: imageList,
-                autoRotate: true,
-                rotationCount: rotationCount,
-                rotationDirection: RotationDirection.anticlockwise,
-                frameChangeDuration: frameChangeDuration,
-                swipeSensitivity: swipeSensitivity,
-                allowSwipeToRotate: allowSwipeToRotate,
-                onImageIndexChanged: (currentImageIndex) {
-                  print("currentImageIndex: $currentImageIndex");
-                },
-              )
-            : Text("Pre-Caching images..."),
       ],
     );
   }
-}
 
-class SideCardOverlay extends StatelessWidget {
-  const SideCardOverlay({
-    Key? key,
-    required this.context,
-    required this.widget,
-  }) : super(key: key);
-
-  final BuildContext context;
-  final SiteInfosPage widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            VrButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
-            const Spacer(),
-            const OpenMapButton(),
-          ],
-        ),
-        const Spacer(),
-        Row(
-          children: [
-            SizedBox(
-              width: 150,
-              child: Text(
-                widget.siteinfos.name ?? "",
-                style: AppTheme.theme.textTheme.headline5,
-                maxLines: 2,
+  Widget _roomInfo({required String text, IconData? icon}) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(0, 12, 0, 12),
+      child: Row(
+        children: [
+          Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(9),
+                color: AppTheme.palette.buttonNavigation,
               ),
+              child: icon != null
+                  ? Icon(
+                      icon,
+                      color: AppTheme.palette.accentColor,
+                    )
+                  : null),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              text,
+              style: AppTheme.theme.textTheme.subtitle2,
             ),
-            const Spacer(),
-            Positioned(
-              top: -200,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10, top: 1.0),
-                child: Container(
-                  height: 120,
-                  width: 80,
-                  clipBehavior: Clip.none,
-                  child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      clipBehavior: Clip.none,
-                      scrollDirection: Axis.vertical,
-                      itemCount: widget.siteinfos.photos?.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                    image: (AssetImage(
-                                        widget.siteinfos.photos![index])),
-                                    fit: BoxFit.cover,
-                                  ))),
-                        );
-                      }),
-                ),
-              ),
-            )
-          ],
-        ),
-        Text(
-          widget.siteinfos.address ?? "",
-          style: AppTheme.theme.textTheme.caption,
-        ),
-      ],
+          ),
+        ],
+      ),
     );
+  }
+
+  Widget _imaGere() {
+    return (imagePrecached == true)
+        ? ImageView360(
+            key: UniqueKey(),
+            imageList: imageList,
+            autoRotate: true,
+            rotationCount: rotationCount,
+            rotationDirection: RotationDirection.anticlockwise,
+            frameChangeDuration: frameChangeDuration,
+            swipeSensitivity: swipeSensitivity,
+            allowSwipeToRotate: allowSwipeToRotate,
+            onImageIndexChanged: (currentImageIndex) {
+              print("currentImageIndex: $currentImageIndex");
+            },
+          )
+        : Text(
+            "Pre-Caching images...",
+            style: AppTheme.theme.textTheme.headline2,
+          );
   }
 }

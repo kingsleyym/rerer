@@ -26,6 +26,11 @@ class BaseTheme {
           subtitle1: TextStyle(
             color: _palette.accentColor,
           ),
+          subtitle2: TextStyle(
+            color: _palette.primaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
           caption: TextStyle(
             color: _palette.secondaryColor,
           ),
