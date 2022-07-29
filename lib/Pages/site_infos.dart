@@ -20,11 +20,11 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
   List<ImageProvider> imageList = <ImageProvider>[];
   bool autoRotate = true;
   int rotationCount = 1;
-  int swipeSensitivity = 1;
+  int swipeSensitivity = 2;
   bool allowSwipeToRotate = true;
   RotationDirection rotationDirection = RotationDirection.clockwise;
-  Duration frameChangeDuration = const Duration(milliseconds: 60);
-  bool imagePrecached = false;
+  Duration frameChangeDuration = Duration(milliseconds: 60);
+  bool imagePrecached = true;
 
   @override
   void initState() {
@@ -32,6 +32,16 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
     WidgetsBinding.instance
         .addPostFrameCallback((_) => updateImageList(context));
     super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 48),
+        child: _pageBuilder(),
+      ),
+    );
   }
 
   void updateImageList(BuildContext context) async {
@@ -43,16 +53,6 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
     setState(() {
       imagePrecached = true;
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 48),
-        child: _pageBuilder(),
-      ),
-    );
   }
 
   Widget _pageBuilder() {
@@ -148,7 +148,7 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
                         borderRadius: BorderRadius.circular(45)),
                   ),
                 ),
-                Container(decoration: BoxDecoration(), child: _imaGere())
+                _imaGere(),
               ]),
             ],
           ),
@@ -168,12 +168,10 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
                 borderRadius: BorderRadius.circular(9),
                 color: AppTheme.palette.buttonNavigation,
               ),
-              child: icon != null
-                  ? Icon(
-                      icon,
-                      color: AppTheme.palette.accentColor,
-                    )
-                  : null),
+              child: Icon(
+                icon,
+                color: AppTheme.palette.accentColor,
+              )),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -197,9 +195,6 @@ class _SiteInfosPageState extends State<SiteInfosPage> {
             frameChangeDuration: frameChangeDuration,
             swipeSensitivity: swipeSensitivity,
             allowSwipeToRotate: allowSwipeToRotate,
-            onImageIndexChanged: (currentImageIndex) {
-              print("currentImageIndex: $currentImageIndex");
-            },
           )
         : Text(
             "Pre-Caching images...",

@@ -3,10 +3,9 @@ import 'package:hayan_app/widget/vr_button.dart';
 import '../Pages/panoramasite.dart';
 import '../Pages/site_infos.dart';
 import '../themes/app_theme.dart';
-import 'favorite_button.dart';
 import 'open_map_button.dart';
 
-class SideCardOverlayIn extends StatelessWidget {
+class SideCardOverlayIn extends StatefulWidget {
   const SideCardOverlayIn({
     Key? key,
     required this.context,
@@ -16,6 +15,11 @@ class SideCardOverlayIn extends StatelessWidget {
   final BuildContext context;
   final SiteInfosPage widget;
 
+  @override
+  State<SideCardOverlayIn> createState() => _SideCardOverlayInState();
+}
+
+class _SideCardOverlayInState extends State<SideCardOverlayIn> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,47 +45,44 @@ class SideCardOverlayIn extends StatelessWidget {
             SizedBox(
               width: 150,
               child: Text(
-                widget.siteinfos.name ?? "",
+                widget.widget.siteinfos.name ?? "",
                 style: AppTheme.theme.textTheme.headline5,
                 maxLines: 2,
               ),
             ),
             const Spacer(),
-            Positioned(
-              top: -200,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10, top: 1.0),
-                child: Container(
-                  height: 120,
-                  width: 80,
-                  clipBehavior: Clip.none,
-                  child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      clipBehavior: Clip.none,
-                      scrollDirection: Axis.vertical,
-                      itemCount: widget.siteinfos.photos?.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                    image: (AssetImage(
-                                        widget.siteinfos.photos![index])),
-                                    fit: BoxFit.cover,
-                                  ))),
-                        );
-                      }),
-                ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, top: 1.0),
+              child: Container(
+                height: 120,
+                width: 80,
+                clipBehavior: Clip.none,
+                child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    clipBehavior: Clip.none,
+                    scrollDirection: Axis.vertical,
+                    itemCount: widget.widget.siteinfos.photos?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: (AssetImage(
+                                      widget.widget.siteinfos.photos![index])),
+                                  fit: BoxFit.cover,
+                                ))),
+                      );
+                    }),
               ),
-            )
+            ),
           ],
         ),
         Text(
-          widget.siteinfos.address ?? "",
+          widget.widget.siteinfos.address ?? "",
           style: AppTheme.theme.textTheme.caption,
         ),
       ],

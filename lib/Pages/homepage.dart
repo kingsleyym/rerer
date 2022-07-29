@@ -52,20 +52,20 @@ class _HomePageState extends State<HomePage> {
     final siteInfos = SiteInfos;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _header(),
-        const Spacer(
-          flex: 1,
+        SizedBox(
+          height: 15,
         ),
         SearchBar(
           onPressed: () {},
         ),
         const Spacer(
-          flex: 2,
+          flex: 1,
         ),
         Expanded(
-          flex: 20,
+          flex: 9,
           child: PageView.builder(
             clipBehavior: Clip.none,
             itemCount: siteInfos.length,

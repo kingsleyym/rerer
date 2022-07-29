@@ -15,12 +15,13 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
-      padding: const EdgeInsets.all(4),
+      width: 340,
+      height: 60,
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          border: Border.all(width: 2),
-          borderRadius: BorderRadius.circular(50),
-          color: Colors.transparent),
+        borderRadius: BorderRadius.circular(25),
+        color: _palette.primaryColor,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -49,12 +50,12 @@ class _NavBarState extends State<NavBar> {
     required int index,
     required IconData icon,
     VoidCallback? onPressed,
-    int selectedIndex = 0,
+    int selectedIndex: 0,
   }) {
     bool isSelected = selectedIndex == index;
     return Material(
       color: isSelected ? AppTheme.palette.buttonOverlay : Colors.transparent,
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(30),
       clipBehavior: Clip.antiAlias,
       child: IconButton(
         visualDensity: VisualDensity.compact,
@@ -62,7 +63,7 @@ class _NavBarState extends State<NavBar> {
           icon,
           color: isSelected
               ? AppTheme.palette.secondaryColor
-              : AppTheme.palette.primaryColor,
+              : AppTheme.palette.buttonOverlay,
         ),
         onPressed: () {
           _selected = index;

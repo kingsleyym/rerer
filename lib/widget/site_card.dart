@@ -10,7 +10,7 @@ class SiteCard extends StatefulWidget {
   }) : super(key: key);
 
   final BuildContext context;
-  final siteInfos;
+  final dynamic siteInfos;
 
   @override
   State<SiteCard> createState() => _SiteCardState();
@@ -27,10 +27,9 @@ class _SiteCardState extends State<SiteCard> {
         }));
       },
       child: Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8),
+          padding: const EdgeInsets.only(top: 20, left: 8.0, right: 8),
           child: Container(
-              clipBehavior: Clip.none,
-              height: 400,
+              clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   alignment: const Alignment(0.1, 0),
