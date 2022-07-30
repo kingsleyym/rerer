@@ -29,7 +29,7 @@ class OverlayHome extends StatelessWidget {
                 Icons.view_in_ar_rounded,
                 color: AppTheme.palette.accentColor,
               ),
-              onPressed: () {
+              onpressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MyHomePage()),

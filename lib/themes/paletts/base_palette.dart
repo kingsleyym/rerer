@@ -6,7 +6,7 @@ class BasePalette {
   Color get background => const Color(0xFFF0F3FF);
   Color get primaryColor => const Color(0xFF121212);
   Color get secondaryColor => Colors.white;
-  Color get accentColor => const Color(0xFF46BEE4);
+  Color get accentColor => Colors.green.shade500;
 
   Color get textHeadline => const Color(0xFF161849);
   Color get textBody => const Color(0xFFC4C4C4);

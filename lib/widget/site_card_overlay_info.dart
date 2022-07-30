@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hayan_app/widget/nav_bar.dart';
 import 'package:hayan_app/widget/vr_button.dart';
 import '../Pages/homepage.dart';
 import '../Pages/panoramasite.dart';
@@ -34,10 +35,11 @@ class _SideCardOverlayInState extends State<SideCardOverlayIn> {
                 Icons.arrow_back,
                 color: AppTheme.palette.accentColor,
               ),
-              onPressed: () {
-                Navigator.push(
+              onpressed: () {
+                Navigator.push<void>(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute<void>(
+                      builder: (BuildContext context) => const NavBar()),
                 );
               },
             ),
@@ -48,7 +50,7 @@ class _SideCardOverlayInState extends State<SideCardOverlayIn> {
                 Icons.view_in_ar_rounded,
                 color: AppTheme.palette.accentColor,
               ),
-              onPressed: () {
+              onpressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MyHomePage()),

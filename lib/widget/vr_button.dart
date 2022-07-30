@@ -5,13 +5,9 @@ import 'package:hayan_app/widget/search_bar.dart';
 import '../Pages/panoramasite.dart';
 
 class VrButton extends StatelessWidget {
-  final VoidCallback? onpressed;
+  final VoidCallback onpressed;
   final Icon icon;
-  const VrButton(
-      {Key? key,
-      this.onpressed,
-      required Null Function() onPressed,
-      required this.icon})
+  const VrButton({Key? key, required this.onpressed, required this.icon})
       : super(key: key);
 
   @override
@@ -35,18 +31,7 @@ class VrButton extends StatelessWidget {
             width: 42,
             child: Material(
               color: Colors.transparent,
-              child: InkWell(
-                onTap: onPressed,
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MyHomePage()),
-                      );
-                    },
-                    icon: icon),
-              ),
+              child: IconButton(onPressed: onpressed, icon: icon),
             ),
           )
         ],

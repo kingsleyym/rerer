@@ -55,11 +55,11 @@ class _HomePageState extends State<HomePage> {
         SearchBar(
           onPressed: () {},
         ),
-        const Spacer(
-          flex: 1,
+        SizedBox(
+          height: 15,
         ),
         Expanded(
-          flex: 9,
+          flex: 8,
           child: PageView.builder(
             clipBehavior: Clip.none,
             itemCount: siteInfos.length,
@@ -71,10 +71,6 @@ class _HomePageState extends State<HomePage> {
             }),
           ),
         ),
-        const Spacer(
-          flex: 1,
-        ),
-        const NavBar(),
       ],
     );
   }
@@ -89,7 +85,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _header() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: 40.0),
       child: Row(
         children: [
           Column(
