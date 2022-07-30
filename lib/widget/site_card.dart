@@ -37,8 +37,8 @@ class _SiteCardState extends State<SiteCard> {
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  const BoxShadow(
+                boxShadow: const [
+                  BoxShadow(
                     blurRadius: 15,
                     offset: Offset(0, 12),
                     color: Colors.black26,

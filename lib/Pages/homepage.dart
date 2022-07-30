@@ -1,19 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hayan_app/Models/site_infos.dart';
-import 'package:hayan_app/Pages/panoramasite.dart';
-import 'package:hayan_app/Pages/site_infos.dart';
 import 'package:hayan_app/widget/notify_icon_button.dart';
 import 'package:hayan_app/widget/search_bar.dart';
 import '../themes/app_theme.dart';
 import 'package:hayan_app/widget/site_card.dart';
-import '../widget/favorite_button.dart';
 import '../widget/nav_bar.dart';
 // ignore: library_prefixes
 import 'package:flutter/services.dart' as rootBundle;
-
-import '../widget/open_map_button.dart';
-import '../widget/vr_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

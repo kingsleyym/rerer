@@ -50,7 +50,7 @@ class _NavBarState extends State<NavBar> {
     required int index,
     required IconData icon,
     VoidCallback? onPressed,
-    int selectedIndex: 0,
+    int selectedIndex = 0,
   }) {
     bool isSelected = selectedIndex == index;
     return Material(

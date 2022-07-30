@@ -6,7 +6,12 @@ import '../Pages/panoramasite.dart';
 
 class VrButton extends StatelessWidget {
   final VoidCallback? onpressed;
-  const VrButton({Key? key, this.onpressed, required Null Function() onPressed})
+  final Icon icon;
+  const VrButton(
+      {Key? key,
+      this.onpressed,
+      required Null Function() onPressed,
+      required this.icon})
       : super(key: key);
 
   @override
@@ -40,11 +45,7 @@ class VrButton extends StatelessWidget {
                             builder: (context) => const MyHomePage()),
                       );
                     },
-                    icon: Icon(
-                      size: 18,
-                      Icons.view_in_ar_rounded,
-                      color: AppTheme.palette.accentColor,
-                    )),
+                    icon: icon),
               ),
             ),
           )

@@ -24,6 +24,11 @@ class OverlayHome extends StatelessWidget {
         Row(
           children: [
             VrButton(
+              icon: Icon(
+                size: 18,
+                Icons.view_in_ar_rounded,
+                color: AppTheme.palette.accentColor,
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
