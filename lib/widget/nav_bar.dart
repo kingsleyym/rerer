@@ -25,10 +25,10 @@ class _NavBarState extends State<NavBar> {
   }
 
   final List<Widget> _pages = [
-    HomePage(),
-    helpPage(),
-    ServicePage(),
-    User(),
+    const HomePage(),
+    const HelpPage(),
+    const ServicePage(),
+    const User(),
   ];
 
   @override
@@ -36,11 +36,11 @@ class _NavBarState extends State<NavBar> {
     return Scaffold(
       body: _pages[_selected],
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.fromLTRB(25, 25, 26, 25),
+        padding: const EdgeInsets.fromLTRB(25, 25, 26, 25),
         child: Container(
           width: 340,
           height: 60,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             color: _palette.primaryColor,
