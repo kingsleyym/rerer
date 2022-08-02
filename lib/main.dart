@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hayan_app/Pages/homepage.dart';
 import 'package:hayan_app/themes/app_theme.dart';
+import 'package:hayan_app/widget/drawer.dart';
 import 'package:hayan_app/widget/nav_bar.dart';
 
 void main() {
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
               )),
         ),
         debugShowCheckedModeBanner: false,
-        home: NavBar(),
+        home: DrawerBar(),
       ),
     );
   }
