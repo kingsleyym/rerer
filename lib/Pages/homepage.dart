@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:hayan_app/Models/site_infos.dart';
 import 'package:hayan_app/widget/notify_icon_button.dart';
 import 'package:hayan_app/widget/search_bar.dart';
@@ -22,6 +23,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            if (ZoomDrawer.of(context)!.isOpen()) {
+              ZoomDrawer.of(context)!.close();
+            } else {
+              ZoomDrawer.of(context)!.open();
+            }
+          },
+          icon: Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
         child: SizedBox(

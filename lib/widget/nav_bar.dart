@@ -4,6 +4,7 @@ import 'package:hayan_app/Pages/helpPage.dart';
 import 'package:hayan_app/Pages/servicepage.dart';
 import 'package:hayan_app/Pages/me.dart';
 import 'package:hayan_app/themes/app_theme.dart';
+import 'package:hayan_app/widget/drawer.dart';
 
 import '../Pages/helpPage.dart';
 
@@ -26,7 +27,7 @@ class _NavBarState extends State<NavBar> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const HelpPage(),
+    const DrawerBar(),
     const ServicePage(),
     const User(),
   ];
