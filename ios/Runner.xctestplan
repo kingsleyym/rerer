@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "4A19C160-E478-4DCB-BE4C-7B9E1C924409",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Runner.xcodeproj",
+      "identifier" : "97C146ED1CF9000F007C117D",
+      "name" : "Runner"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}
