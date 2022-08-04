@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:hayan_app/Models/site_infos.dart';
+import 'package:hayan_app/Pages/me.dart';
 import 'package:hayan_app/widget/notify_icon_button.dart';
 import 'package:hayan_app/widget/search_bar.dart';
 import '../themes/app_theme.dart';
@@ -23,24 +24,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            if (ZoomDrawer.of(context)!.isOpen()) {
-              ZoomDrawer.of(context)!.close();
-            } else {
-              ZoomDrawer.of(context)!.open();
-            }
-          },
-          icon: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        ),
-      ),
       body: Container(
-        padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+        padding: const EdgeInsets.fromLTRB(16, 5, 16, 20),
         child: SizedBox(
           height: MediaQuery.of(context).size.height - 50,
           child: FutureBuilder(
@@ -65,6 +50,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        AppBAr(),
         _header(),
         SizedBox(
           height: 15,
@@ -73,7 +59,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {},
         ),
         SizedBox(
-          height: 15,
+          height: 5,
         ),
         Expanded(
           flex: 8,
@@ -88,6 +74,10 @@ class _HomePageState extends State<HomePage> {
             }),
           ),
         ),
+        SizedBox(
+          height: 15,
+        ),
+        BottomElemnt()
       ],
     );
   }
@@ -102,7 +92,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _header() {
     return Padding(
-      padding: const EdgeInsets.only(top: 40.0),
+      padding: const EdgeInsets.only(top: 15.0, left: 10),
       child: Row(
         children: [
           Column(
@@ -138,8 +128,77 @@ class _HomePageState extends State<HomePage> {
                 )
               ]),
           const Spacer(),
-          const NotifyIconButton(),
         ],
+      ),
+    );
+  }
+}
+
+class BottomElemnt extends StatelessWidget {
+  const BottomElemnt({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(10, 15, 10, 30),
+      child: Container(
+        height: 65,
+        padding: EdgeInsets.fromLTRB(45, 8, 25, 10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            color: Color.fromARGB(196, 3, 17, 4),
+            border: Border.all(width: 1, color: Colors.white)),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 220,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Look up for more",
+                      style: AppTheme.theme.textTheme.bodyText2?.copyWith(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Spacer(),
+                    Text(
+                      "Wenn du hier drückst,\npassiert was tolles",
+                      maxLines: 2,
+                      style: AppTheme.theme.textTheme.bodyText2?.copyWith(
+                          color: Colors.white,
+                          letterSpacing: 0.5,
+                          height: 0.9,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w100),
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.transparent,
+                    border: Border.all(width: 2, color: Colors.white)),
+                height: 45,
+                width: 45,
+                child: Center(
+                    child: IconButton(
+                  icon: Icon(
+                    color: Colors.white,
+                    Icons.arrow_forward,
+                  ),
+                  onPressed: () {},
+                )),
+              )
+            ]),
       ),
     );
   }

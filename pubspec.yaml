@@ -43,6 +43,7 @@ dependencies:
   imageview360: ^1.3.0
   hidden_drawer_menu: ^3.0.1
   flutter_zoom_drawer: ^3.0.3
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,7 @@ flutter:
     - assets/sites.json
     - jsonfile/
     - assets/images/369/
+    - assets/images/aleflogo.png
   
 
   

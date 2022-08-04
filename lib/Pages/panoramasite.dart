@@ -5,6 +5,8 @@ import 'package:hayan_app/Pages/homepage.dart';
 import 'package:panorama/panorama.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../widget/drawer.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, this.title}) : super(key: key);
 
@@ -79,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         panorama = Panorama(
           sensitivity: 2,
-          animSpeed: 1.0,
-          sensorControl: SensorControl.Orientation,
+          animSpeed: 0.1,
+          sensorControl: SensorControl.AbsoluteOrientation,
           onViewChanged: onViewChanged,
           hotspots: [
             Hotspot(
@@ -382,9 +384,10 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         mini: true,
         onPressed: () {
-          Navigator.push(
+          Navigator.push<void>(
             context,
-            MaterialPageRoute(builder: (context) => const HomePage()),
+            MaterialPageRoute<void>(
+                builder: (BuildContext context) => const DrawerBar()),
           );
         },
         child: const Icon(Icons.panorama),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hayan_app/widget/drawer.dart';
 import 'package:hayan_app/widget/nav_bar.dart';
 import 'package:hayan_app/widget/vr_button.dart';
 import '../Pages/homepage.dart';
@@ -39,7 +40,7 @@ class _SideCardOverlayInState extends State<SideCardOverlayIn> {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const NavBar()),
+                      builder: (BuildContext context) => const DrawerBar()),
                 );
               },
             ),
